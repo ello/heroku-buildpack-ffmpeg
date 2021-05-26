@@ -39,13 +39,13 @@ We utilize only `bin/compile` script expected by [Heroku Buildpack API](https://
 
 [Heroku stack](https://devcenter.heroku.com/articles/stack) your app is running on is something you have to configure yourself.
 
-Desired FFmpeg version cat be set by `FFMPEG_VERSION` config var. It defaults to whatever we have seen as the last stable version which is *4.1.1* as of this writing.
+Desired FFmpeg version cat be set by `FFMPEG_VERSION` config var. It defaults to whatever we have seen as the last stable version which is _4.1.1_ as of this writing.
 
 The AWS S3 bucket can be overridden by setting `FFMPEG_S3_BUCKET` config var. It defaults to `kc-heroku-buildpack-binaries`. We expect to find binary archives with these keys: `ffmpeg/$STACK/$FFMPEG_VERSION.tar.xz`.
 
 ## Building Binary Archives
 
-We use Docker with Heroku-18 build image. It is simple and straightforward.
+We use Docker with Heroku-20 build image. It is simple and straightforward.
 
 The code itself should build FFmpeg on Cedar-14 but it requires more complicated setup. We have no need for it, so we do not support it.
 
@@ -59,5 +59,5 @@ Run the following to build and publish binary archive:
 
 We use [AWS CLI](https://aws.amazon.com/cli/) in the example above, but you can use anything that suits you. However, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are required. There are other environment variables which affect the build process and were described before:
 
-* `FFMPEG_S3_BUCKET`
-* `FFMPEG_VERSION`
+- `FFMPEG_S3_BUCKET`
+- `FFMPEG_VERSION`
