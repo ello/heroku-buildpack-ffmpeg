@@ -14,6 +14,9 @@ COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN ["bundle"]
 
+# Install libs for gif to mp4 conversion - also must be install on dyno, eg via Aptfile
+RUN apt-get update && apt-get install -y x264 libx264-148 libx264-dev
+
 ENV FFMPEG_DIR="${BUILD_DIR}/.ffmpeg"
 VOLUME ["${FFMPEG_DIR}.build"]
 

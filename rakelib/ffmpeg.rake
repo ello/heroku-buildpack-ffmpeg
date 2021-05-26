@@ -27,7 +27,8 @@ module FFmpeg
     configure = File.absolute_path t.prerequisites.first
     prefix = File.absolute_path PREFIX
     Dir.chdir File.dirname t.name do
-      sh configure, "--prefix=#{prefix}", "--enable-nonfree", "--enable-gnutls", "--enable-libmp3lame"
+      # Enable libx264 (and gpl) for gif to mp4 conversion compatible with chrome, ff, ie.
+      sh configure, "--prefix=#{prefix}", "--enable-nonfree", "--enable-gnutls", "--enable-libmp3lame", "--enable-gpl", "--enable-libx264"
     end
   end
 
